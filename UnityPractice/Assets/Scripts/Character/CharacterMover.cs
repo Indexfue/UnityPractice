@@ -15,15 +15,14 @@ namespace UnityPractice.Character
 
         private Vector3 MovementVector => _rawMovementVector * Time.deltaTime;
 
+        public void Construct(Camera camera)
+        {
+            _camera = camera;
+        }
+
         private void Awake()
         {
             _inputService = Game.InputService;
-        }
-
-        private void Start()
-        {
-            _camera = Camera.main;
-            CameraFollow();
         }
 
         private void Update()
@@ -41,14 +40,6 @@ namespace UnityPractice.Character
 
             _rawMovementVector += Physics.gravity;
             characterController.Move(MovementVector * movementSpeed);
-        }
-
-        private void CameraFollow()
-        {
-            if (_camera.TryGetComponent(out CameraFollow cameraFollow))
-            {
-                cameraFollow.Follow(gameObject);
-            }
         }
     }
 }
