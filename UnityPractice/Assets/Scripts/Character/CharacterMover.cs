@@ -1,6 +1,7 @@
 using UnityPractice.CameraLogic;
 using UnityEngine;
 using UnityPractice.Infrastructure;
+using UnityPractice.Infrastructure.Services;
 
 namespace UnityPractice.Character
 {
@@ -22,7 +23,7 @@ namespace UnityPractice.Character
 
         private void Awake()
         {
-            _inputService = Game.InputService;
+            _inputService = AllServices.Container.Single<IInputService>();
         }
 
         private void Update()
