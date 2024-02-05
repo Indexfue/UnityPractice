@@ -9,7 +9,7 @@ namespace UnityPractice.Infrastructure.Services.SaveLoad
     public class SaveLoadService : ISaveLoadService
     {
         private const string ProgressKey = "Progress";
-
+    
         private readonly IPersistentProgressService _progressService;
         private readonly IGameFactory _gameFactory;
 
@@ -23,13 +23,13 @@ namespace UnityPractice.Infrastructure.Services.SaveLoad
         {
             foreach (ISavedProgress progressWriter in _gameFactory.ProgressWriters)
             {
-                progressWriter.SaveProgress(_progressService.PlayerProgress);
-            }  
-            
-            PlayerPrefs.SetString(ProgressKey, _progressService.PlayerProgress.ToJson());
+                progressWriter.SaveProgress(_progressService.Progress);
+            }
+      
+            PlayerPrefs.SetString(ProgressKey, _progressService.Progress.ToJson());
         }
 
-        public PlayerProgress LoadProgress() => 
+        public PlayerProgress LoadProgress() =>
             PlayerPrefs.GetString(ProgressKey)?
                 .ToDeserialized<PlayerProgress>();
     }
