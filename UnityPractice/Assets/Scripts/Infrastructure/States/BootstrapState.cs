@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityPractice.Infrastructure.AssetManagement;
 using UnityPractice.Infrastructure.Factories;
 using UnityPractice.Infrastructure.Services;
@@ -41,7 +41,7 @@ namespace UnityPractice.Infrastructure.States
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<PersistentProgressService>(), _services.Single<IGameFactory>()));
         }
          
-        private static IInputService RegisterInputService()
+        private static IInputService InputService()
         {
             if (Application.isEditor)
                 return new StandaloneInputService();

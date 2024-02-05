@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityPractice.CameraLogic;
 using UnityPractice.Character;
+using UnityPractice.Infrastructure.Factories;
 using UnityPractice.Infrastructure.Services.PersistentProgress;
 using UnityPractice.Logic;
 
