@@ -19,7 +19,7 @@ namespace UnityPractice.Infrastructure
             _coroutineRunner.StartCoroutine(LoadScene(sceneName, onLoaded));
         }
 
-        public IEnumerator LoadScene(string sceneName, Action onLoaded = null)
+        private IEnumerator LoadScene(string sceneName, Action onLoaded = null)
         {
             if (SceneManager.GetActiveScene().name == sceneName) 
             {
@@ -34,7 +34,7 @@ namespace UnityPractice.Infrastructure
                 yield return new WaitForEndOfFrame();
             }
 
-            onLoaded?.Invoke();
+            onLoaded?.Invoke(); 
         }
     }
 }
