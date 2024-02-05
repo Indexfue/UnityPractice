@@ -1,7 +1,8 @@
-﻿using System.Net;
+﻿using System;
 
 namespace Data
 {
+    [Serializable]
     public class PlayerProgress
     {
         public WorldData WorldData;
