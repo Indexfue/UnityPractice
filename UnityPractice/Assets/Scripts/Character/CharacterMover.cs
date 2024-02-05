@@ -33,15 +33,15 @@ namespace UnityPractice.Character
             }
         }
 
+        public void SaveProgress(PlayerProgress playerProgress) => 
+            playerProgress.WorldData.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsWorldVector3());
+
         private void Warp(Vector3Data to)
         {
             characterController.enabled = false;
             transform.position = to.AsUnityVector3().AddY(characterController.height);
             characterController.enabled = true;
         }
-
-        public void SaveProgress(PlayerProgress playerProgress) => 
-            playerProgress.WorldData.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsWorldVector3());
 
         private static string CurrentLevel() => 
             SceneManager.GetActiveScene().name;
