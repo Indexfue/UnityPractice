@@ -1,12 +1,11 @@
-﻿using UnityEngine;
-using UnityPractice.Infrastructure.Services;
+﻿using UnityPractice.Infrastructure.Services;
 using UnityPractice.Logic;
 
 namespace UnityPractice.Infrastructure
 {
     public class Game
     {
-        public GameStateMachine StateMachine;
+        public readonly GameStateMachine StateMachine;
 
         public Game(ICoroutineRunner coroutineRunner, LoadingCurtain loadingCurtain)
         {

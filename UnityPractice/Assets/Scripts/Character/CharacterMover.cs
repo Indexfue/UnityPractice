@@ -1,11 +1,13 @@
+using Data;
 using UnityPractice.CameraLogic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityPractice.Infrastructure;
 using UnityPractice.Infrastructure.Services;
 
 namespace UnityPractice.Character
 {
-    public class CharacterMover : MonoBehaviour
+    public class CharacterMover : MonoBehaviour, ISavedProgress
     {
         [SerializeField] private CharacterController characterController;
         [SerializeField] private float movementSpeed;
@@ -20,6 +22,29 @@ namespace UnityPractice.Character
         {
             _camera = camera;
         }
+
+        public void Load(PlayerProgress playerProgress)
+        {
+            if (CurrentLevel() == playerProgress.WorldData.PositionOnLevel.Level)
+            {
+                Vector3Data savedPosition = playerProgress.WorldData.PositionOnLevel.Position;
+                if (savedPosition != null) 
+                    Warp(savedPosition);
+            }
+        }
+
+        public void SaveProgress(PlayerProgress playerProgress) => 
+            playerProgress.WorldData.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsWorldVector3());
+
+        private void Warp(Vector3Data to)
+        {
+            characterController.enabled = false;
+            transform.position = to.AsUnityVector3().AddY(characterController.height);
+            characterController.enabled = true;
+        }
+
+        private static string CurrentLevel() => 
+            SceneManager.GetActiveScene().name;
 
         private void Awake()
         {
