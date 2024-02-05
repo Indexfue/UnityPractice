@@ -14,6 +14,7 @@ namespace UnityPractice.CameraLogic
         {
             if(_followingObject == null)
                 return;
+            
             Quaternion rotation = Quaternion.Euler(rotationAngleX, 0, 0);
             Vector3 position = rotation * new Vector3(0, 0, -distance) + FollowingPointPosition();
             transform.rotation = rotation;
@@ -22,8 +23,9 @@ namespace UnityPractice.CameraLogic
 
         public void Follow(GameObject following)
         {
-            this._followingObject = following.transform;
+            _followingObject = following.transform;
         }
+        
         private Vector3 FollowingPointPosition()
         {
             Vector3 followingPosition = _followingObject.position;
