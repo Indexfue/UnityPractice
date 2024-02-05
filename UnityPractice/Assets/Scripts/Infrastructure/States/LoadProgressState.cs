@@ -1,5 +1,6 @@
 ﻿using System;
 using Data;
+using UnityEngine;
 using UnityPractice.Infrastructure.Services.PersistentProgress;
 using UnityPractice.Infrastructure.Services.SaveLoad;
 
@@ -22,7 +23,7 @@ namespace UnityPractice.Infrastructure.States
         {
             LoadProgressOrInitNew();
             
-            _stateMachine.EnterIn<LoadLevelState, string>(_progressService.PlayerProgress.WorldData.PositionOnLevel.Level);
+            _stateMachine.EnterIn<LoadLevelState, string>(_progressService.Progress.WorldData.PositionOnLevel.Level);
         }
 
         public void Exit()
@@ -32,7 +33,7 @@ namespace UnityPractice.Infrastructure.States
 
         private void LoadProgressOrInitNew()
         {
-            _progressService.PlayerProgress = _saveLoadService.LoadProgress() ?? NewProgress();
+            _progressService.Progress = _saveLoadService.LoadProgress() ?? NewProgress();
         }
 
         private PlayerProgress NewProgress() => new(initialLevel: "Main");

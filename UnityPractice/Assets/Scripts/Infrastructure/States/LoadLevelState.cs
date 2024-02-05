@@ -52,7 +52,7 @@ namespace UnityPractice.Infrastructure.States
         {
             foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)
             {
-                progressReader.Load(_progressService.PlayerProgress);
+                progressReader.Load(_progressService.Progress);
             }
         }
 
