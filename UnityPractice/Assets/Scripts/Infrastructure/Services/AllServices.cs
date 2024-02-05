@@ -1,6 +1,4 @@
-﻿using UnityPractice.Infrastructure.Factories;
-
-namespace UnityPractice.Infrastructure.Services
+﻿namespace UnityPractice.Infrastructure.Services
 {
     public class AllServices
     {
