@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityPractice.Infrastructure.Factories;
 using UnityPractice.Infrastructure.Services;
 using UnityPractice.Infrastructure.Services.PersistentProgress;
