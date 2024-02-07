@@ -469,7 +469,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 5
+  m_Speed: 1
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 1600
@@ -522,6 +522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerObserver: {fileID: 375129335065349229}
   follow: {fileID: 2520644760148647518}
+  aggroTime: 2
 --- !u!1 &1537370055453520
 GameObject:
   m_ObjectHideFlags: 0
